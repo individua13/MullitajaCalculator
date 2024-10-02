@@ -1,0 +1,334 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Page Title</title>
+
+<style>/*for all object css*/
+
+.row{
+  padding-top: 1%;
+  width: 100%;
+  justify-content: center
+
+
+}
+
+input[type=number]{
+  text-align: center;
+  min-width: 10px;
+  height: 40px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+@media only screen and (max-width: 1200px) {
+
+  div > .left-div{
+    display: block;
+    width: 550px;
+  }
+  div > .numberBox{
+    width: 150px;
+  }
+  div > .rigth-div{
+    width: 550px;
+  }
+  div > .liquidBox{
+  width: 80px;
+  }
+}
+@media only screen and (max-width: 1100px) {
+  div > .left-div{
+    display: block;
+    width: 400px;
+  }
+  div > .numberBox{
+    width: 70%;
+  }
+  div > .rigth-div{
+    width: 450px;
+  }
+  div > .liquidBox{
+  width: 70px;
+  }
+}
+@media only screen and (max-width: 850px) {
+  div > .left-div{
+    display: block;
+    width: 350px;
+  }
+  div > .numberBox{
+    width: 100px;
+  }
+  ul > .left-list{
+  padding: 10px 10px;
+  margin-bottom: 0px;
+}
+}
+@media only screen and (max-width: 800px) {
+  div > .left-div{
+    display: block;
+    width: 600px;
+  }
+  div > .numberBox{
+    width: 200px;
+  }
+  ul > .left-list{
+  padding: 10px 10px;
+  margin-bottom: 0px;
+  }
+  div > .rigth-div{
+    width: 600px;
+  }
+  div > .liquidBox{
+  width: 70px;
+  }
+  ul > .right-list{
+  padding: 10px 10px;
+  margin-bottom: 0px;
+  }
+  ul > .right-list-header{
+  padding: 5px 5px;
+  margin-bottom: 0px;
+  }
+}
+
+</style>
+
+<style>  /*left div css*/
+.left-div{
+  width: 600px;
+  text-align: center;
+}
+.left-list{
+  background-color: #ffffff;
+  box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);
+  border-radius: 3px;
+  padding: 25px 30px;
+  display: block;
+  margin-bottom: 25px;
+}
+.button1,.button2 {
+  background-color: #4CAF50;
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  border-color: transparent;
+  color: #ffffff;
+}
+.button1 {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0
+}
+.button2 {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0
+}
+.button1:hover,.button2:hover{
+  background-color: #317233;
+
+}
+.numberBox{
+  margin: -4px;
+  margin-bottom: 1px;
+  width: 200px;
+  background-color: transparent;
+  border-top: 3px solid #ccc;
+  border-bottom: 3px solid #ccc;
+  border-left: transparent;
+  border-right: transparent;
+}
+</style>
+<style> /*right div css*/
+.rigth-div{
+  width: 600px;
+  padding-right: 1%;
+}
+.right-list-header{
+  background-color: #4CAF50;
+  color: #ffffff;
+  box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);
+  border-radius: 3px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+.right-list{
+  pointer-events: none;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);
+  border-radius: 3px;
+  padding: 25px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+.table-header {
+  background-color: #95A5A6;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  text-align: center;
+  white-space: nowrap;
+}
+.name{
+width: 10%;
+}
+.name2{
+width: 10%;
+}
+.name1{
+margin-right: 0%;
+}
+.liquidBox{
+  width: 100px;
+}
+
+</style>
+
+</head>
+<body>
+<div class="page-content">
+  <div class="block-title">
+    <div class="row">
+      <div class="left-div">
+        <div class="row-left">
+          <ul class="left-ul">
+            <li class="left-list">
+              <div>
+                <p>Укажите общий обьём в ml:</p>
+              </div>
+              <div>
+                <button class="button1" type="button" onclick="this.nextElementSibling.stepDown();this.nextElementSibling.dispatchEvent(new Event('input'));">-</button>
+                <input class="numberBox" type="number" min="-0" max="1000" value="100" id="total" step="5" >
+                <button class="button2" type="button" onclick="this.previousElementSibling.stepUp();this.previousElementSibling.dispatchEvent(new Event('input'));">+</button>
+              </div>
+            </li>
+            <li class="left-list" id="piter">
+              <div>
+                <p>Укажите % ароматизатора:</p>
+              </div>
+              <div>
+                <button class="button1" type="button" onclick="this.nextElementSibling.stepDown();this.nextElementSibling.dispatchEvent(new Event('input'));">-</button>
+                <input class="numberBox" type="number" min="-0" max="50" value="5" id="procent" step="0.5" >
+                <button class="button2" type="button" onclick="this.previousElementSibling.stepUp();this.previousElementSibling.dispatchEvent(new Event('input'));">+</button>        
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="rigth-div">
+        <div class="row-right">
+          <ul class="right-ul">
+            <li class="right-list-header">
+              <div class="name2">
+                
+              </div>
+              <div class="">
+                Обьём в ml:
+              </div>
+              <div class="name1">
+                Обьём в каплях:
+              </div>
+            </li>
+            <li class="right-list">
+              <div class="name">
+                База:
+              </div>
+              <div>
+                <input  class="liquidBox" type="number" value="0" id="ida">
+              </div>
+              <div>
+                <input class="liquidBox" type="number" value="0" id="idka" >                
+              </div>
+            </li>
+            <li class="right-list">
+              <div class="name">
+                Ароматизатор:
+              </div>
+              <div>
+                <input class="liquidBox" type="number" value="0" id="idc" >
+              </div>
+              <div>
+                <input class="liquidBox" type="number" value="0" id="idcb" >
+              </div>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+<script>
+  function findTotal(){
+      var arr = document.getElementById('a');
+      var tot=0;
+      for(var i=0;i<arr.length;i++){
+          if(parseFloat(arr[i].value))
+              tot += parseFloat(arr[i].value);
+      }
+      document.getElementById('ida').value = tot;
+  }
+  
+</script>
+
+<script>
+          const changeSummaryValues = (a,b)=>{
+
+
+              let kk = 33
+              let c = (b/100*a).toFixed(2)
+              let ka = (a*kk).toFixed(2)
+              let cb = (c*kk).toFixed(2)
+              
+              let toida =(a-c).toFixed(2)
+
+              document.getElementById("idka").value = ka;
+              document.getElementById("ida").value = toida;
+              document.getElementById("idc").value = c;
+              document.getElementById("idcb").value = cb;
+          }
+  
+          function myFunction() {
+              const volumeInput = document.getElementById('total');
+              const percentInput = document.getElementById('procent');
+
+
+              changeSummaryValues(volumeInput.value,percentInput.value)
+  
+              volumeInput.addEventListener('input',e=>{
+                  let a =e.target.value;
+                  let b = percentInput.value
+                  changeSummaryValues(a,b)
+              })
+              percentInput.addEventListener('input',e=>{
+                  let a =volumeInput.value;
+                  let b = e.target.value
+                  changeSummaryValues(a,b)
+              })
+          }
+  
+          document.addEventListener('DOMContentLoaded', function(){
+             myFunction()
+          });
+</script>
+</body>
+</html>
